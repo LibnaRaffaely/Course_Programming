@@ -1,0 +1,12 @@
+
+services:
+  postegres:
+    container_name: course_programming_postgres
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: L2008#
+      POSTGRES_DB: course_programming
+
+    ports:
+      - "5432:5432"
