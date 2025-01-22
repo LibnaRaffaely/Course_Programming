@@ -2,18 +2,26 @@ package com.rocketseat.courses_programming.modules.courses.dto;
 
 import java.util.UUID;
 
+import com.rocketseat.courses_programming.modules.courses.enumFiles.CourseCategory;
+
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 
 @Data
-@SuperBuilder
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class UpdateCourseDTO extends FilterCourseDTO {
+public class UpdateCourseDTO {
 
     private UUID id;
+    private String name;
+    private String category;
+    private CourseCategory categoryEnum;
+
+    public void convertCategory() {
+        this.categoryEnum = CourseCategory.valueOf(this.category.toUpperCase());
+    }
+
 }

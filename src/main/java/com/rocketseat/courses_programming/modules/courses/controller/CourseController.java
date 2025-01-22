@@ -11,19 +11,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.rocketseat.courses_programming.modules.courses.CourseEntity;
 import com.rocketseat.courses_programming.modules.courses.dto.FilterCourseDTO;
+import com.rocketseat.courses_programming.modules.courses.dto.ResponseCourseDTO;
+import com.rocketseat.courses_programming.modules.courses.dto.UpdateCourseDTO;
 import com.rocketseat.courses_programming.modules.courses.useCase.CreateCourseUseCase;
 import com.rocketseat.courses_programming.modules.courses.useCase.DeleteCourseUseCase;
 import com.rocketseat.courses_programming.modules.courses.useCase.FilterCourseUseCase;
 import com.rocketseat.courses_programming.modules.courses.useCase.ToggleActiveCourseUseCase;
+import com.rocketseat.courses_programming.modules.courses.useCase.UpdateCourseUseCase;
 
 import jakarta.validation.Valid;
-import lombok.var;
 
 @RestController
 @RequestMapping("/course")
@@ -39,6 +42,9 @@ public class CourseController {
 
     @Autowired
     private ToggleActiveCourseUseCase toggleActiveCourseUseCase;
+
+    @Autowired
+    private UpdateCourseUseCase updateCourseUseCase;
 
     @PostMapping("/")
     public ResponseEntity<Object> create(@Valid @RequestBody CourseEntity courseEntity) {
@@ -91,5 +97,19 @@ public class CourseController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
 
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateCourse(@PathVariable UUID id, @RequestBody UpdateCourseDTO updateCourseDTO) {
+        try {
+            updateCourseDTO.setId(id);
+            var response = this.updateCourseUseCase.execute(updateCourseDTO);
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(response);
+
+        } catch (UsernameNotFoundException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
     }
 }
