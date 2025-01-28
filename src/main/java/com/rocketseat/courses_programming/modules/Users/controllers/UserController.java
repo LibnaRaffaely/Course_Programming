@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.rocketseat.courses_programming.exceptions.UserFoundException;
 import com.rocketseat.courses_programming.modules.Users.UserEntity;
 import com.rocketseat.courses_programming.modules.Users.dto.RequestUserDTO;
+import com.rocketseat.courses_programming.modules.Users.dto.UpdateRequestDTO;
 import com.rocketseat.courses_programming.modules.Users.useCases.CreateUserUseCase;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -39,5 +40,12 @@ public class UserController {
     }
 
     // atualizar dados cadastrais
+    public ResponseEntity<Object> update(@Valid @RequestBody UpdateRequestDTO updateRequestDTO) {
+        try{
+            //use case de update
+        }
 
+
+        return null;
+    }
 }
