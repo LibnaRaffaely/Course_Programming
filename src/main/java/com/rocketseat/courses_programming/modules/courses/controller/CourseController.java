@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rocketseat.courses_programming.modules.courses.CourseEntity;
 import com.rocketseat.courses_programming.modules.courses.dto.FilterCourseDTO;
-import com.rocketseat.courses_programming.modules.courses.dto.ResponseCourseDTO;
 import com.rocketseat.courses_programming.modules.courses.dto.UpdateCourseDTO;
 import com.rocketseat.courses_programming.modules.courses.useCase.CreateCourseUseCase;
 import com.rocketseat.courses_programming.modules.courses.useCase.DeleteCourseUseCase;

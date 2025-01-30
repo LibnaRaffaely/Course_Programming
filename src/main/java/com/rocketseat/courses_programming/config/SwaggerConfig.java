@@ -1,5 +1,6 @@
 package com.rocketseat.courses_programming.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import io.swagger.v3.oas.models.OpenAPI;
@@ -8,10 +9,13 @@ import io.swagger.v3.oas.models.security.SecurityScheme;
 
 @Configuration
 public class SwaggerConfig {
+
+    @Bean
     public OpenAPI openAPI() {
         return new OpenAPI()
                 .info(new Info().title("Cursos de Programação")
-                        .description("API responsável por gerir aulas de cursos de programação").version("1.0"));
+                        .description("API responsável por gerir aulas de cursos de programação").version("1.0"))
+                .schemaRequirement("jwt_auth", creaSecurityScheme());
 
     }
 

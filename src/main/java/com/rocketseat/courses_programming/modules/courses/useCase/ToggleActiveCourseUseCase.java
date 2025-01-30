@@ -31,8 +31,6 @@ public class ToggleActiveCourseUseCase {
                 .id(courseUpdate.getId())
                 .name(courseUpdate.getName())
                 .active(courseUpdate.isActive())
-                .created_at(courseUpdate.getCreated_at())
-                .update_at(courseUpdate.getUpdate_at())
                 .status(courseUpdate.getStatus())
                 .category(courseUpdate.getCategory())
                 .build();

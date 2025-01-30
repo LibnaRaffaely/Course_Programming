@@ -24,6 +24,11 @@ public class SecurityConfig {
             "/course/{id}/active"
     };
 
+    private static final String[] USER_LIST = {
+            "/user/auth",
+            "/user/"
+    };
+
     @Autowired
     private SecurityFilterUser securityFilterUser;
 
@@ -32,9 +37,8 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers(COURSE_LIST).permitAll()
-                            .requestMatchers("/user/").permitAll()
-                            .requestMatchers(SWAGGER_LIST).permitAll()
-                            .requestMatchers("/user/auth").permitAll();
+                            .requestMatchers(USER_LIST).permitAll()
+                            .requestMatchers(SWAGGER_LIST).permitAll();
                     auth.anyRequest().authenticated();
                 })
                 .addFilterBefore(securityFilterUser, BasicAuthenticationFilter.class);

@@ -29,10 +29,12 @@ public class SecurityFilterUser extends OncePerRequestFilter {
 
         if (request.getRequestURI().startsWith("/user")) {
             if (header != null) {
+                header = header.replace("Bearer ", "");
                 var token = this.jwtUserProvider.validateToken(header);
 
                 if (token == null) {
                     response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                    return;
                 }
 
                 request.setAttribute("user_id", token.getSubject());
@@ -44,7 +46,7 @@ public class SecurityFilterUser extends OncePerRequestFilter {
                         .toList();
 
                 UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(token.getSubject(),
-                        null,
+                        header,
                         grants);
 
                 SecurityContextHolder.getContext().setAuthentication(auth);

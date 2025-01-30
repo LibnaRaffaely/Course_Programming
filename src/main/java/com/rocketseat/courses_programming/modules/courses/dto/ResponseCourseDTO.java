@@ -20,8 +20,6 @@ public class ResponseCourseDTO {
     private UUID id;
     private String name;
     private boolean active;
-    private LocalDateTime created_at;
-    private LocalDateTime update_at;
     private StatusCourse status;
     private CourseCategory category;
 

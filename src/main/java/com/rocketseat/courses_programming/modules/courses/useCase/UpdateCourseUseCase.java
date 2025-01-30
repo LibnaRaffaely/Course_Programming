@@ -37,8 +37,6 @@ public class UpdateCourseUseCase {
                 .id(courseForUpdate.getId())
                 .name(courseForUpdate.getName())
                 .active(courseForUpdate.isActive())
-                .created_at(courseForUpdate.getCreated_at())
-                .update_at(courseForUpdate.getUpdate_at())
                 .status(courseForUpdate.getStatus())
                 .category(courseForUpdate.getCategory())
                 .build();

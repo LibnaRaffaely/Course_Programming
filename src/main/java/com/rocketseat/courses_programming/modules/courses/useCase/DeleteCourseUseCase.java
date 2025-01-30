@@ -23,8 +23,6 @@ public class DeleteCourseUseCase {
                 .id(courseForDelete.getId())
                 .name(courseForDelete.getName())
                 .active(courseForDelete.isActive())
-                .created_at(courseForDelete.getCreated_at())
-                .update_at(courseForDelete.getUpdate_at())
                 .status(courseForDelete.getStatus())
                 .category(courseForDelete.getCategory())
                 .build();

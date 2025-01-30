@@ -23,8 +23,6 @@ public class FilterCourseUseCase {
                     .id(course.getId())
                     .name(course.getName())
                     .active(course.isActive())
-                    .created_at(course.getCreated_at())
-                    .update_at(course.getUpdate_at())
                     .status(course.getStatus())
                     .category(course.getCategory())
                     .build();
@@ -54,13 +52,13 @@ public class FilterCourseUseCase {
         }
 
         if (categoryNull) {
-            var listCourses = this.courseRepository.findByName(filterCourseDTO.getName());
+            var listCourses = this.courseRepository.findByNameIgnoreCase(filterCourseDTO.getName());
             var listCoursesUpdate = changeResponse(listCourses);
             return listCoursesUpdate;
         }
 
         filterCourseDTO.convertCategory();
-        var listCourses = this.courseRepository.findByNameAndCategory(filterCourseDTO.getName(),
+        var listCourses = this.courseRepository.findByNameIgnoreCaseAndCategory(filterCourseDTO.getName(),
                 filterCourseDTO.getCategoryEnum());
 
         var listCoursesUpdate = changeResponse(listCourses);
