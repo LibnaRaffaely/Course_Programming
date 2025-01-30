@@ -1,7 +1,5 @@
 package com.rocketseat.courses_programming.modules.Users.controllers;
 
-import javax.naming.AuthenticationException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

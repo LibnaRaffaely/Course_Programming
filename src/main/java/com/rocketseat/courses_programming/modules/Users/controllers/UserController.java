@@ -4,14 +4,12 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -102,7 +100,7 @@ public class UserController {
                 if (userIdOptional.isEmpty()) {
                     return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Token inválido!");
                 }
-                System.out.printf("-----------" + userIdOptional.get() + "\n");
+
                 UUID userId = UUID.fromString(userIdOptional.get());
                 var contracted = this.contractCourseUseCase.execute(userId, courseId);
                 if (contracted == false) {

@@ -1,6 +1,5 @@
 package com.rocketseat.courses_programming.modules.courses.dto;
 
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 import com.rocketseat.courses_programming.modules.courses.enumFiles.CourseCategory;

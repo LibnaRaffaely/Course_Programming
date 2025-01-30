@@ -1,6 +1,5 @@
 package com.rocketseat.courses_programming.modules.Users.useCases;
 
-import java.lang.reflect.Array;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Arrays;
